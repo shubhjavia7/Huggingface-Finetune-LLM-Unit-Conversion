@@ -15,48 +15,27 @@ class BaseLLM:
         self.device = device
 
     def format_prompt(self, question: str) -> str:
-        """
-        Take a question and convert it into an input to SmolLM2. The LLM will likely answer much
-        better if you provide a chat template. self.tokenizer.apply_chat_template can help here
-        """
         return question
 
     def parse_answer(self, answer: str) -> float:
-        """
-        Parse the <answer></answer> tag and return a float.
-        This function is somewhat robust to output errors (e.g. missing </answer> tags).
-        """
         try:
             return float(answer.split("<answer>")[1].split("</answer>")[0])
         except (IndexError, ValueError):
             return float("nan")
 
     def generate(self, prompt: str) -> str:
-        """
-        Generate a response for a single prompt.
-
-        The overall flow is the same:
-        - tokenize the prompt with self.tokenizer
-        - call self.model.generate
-        - decode the outputs with self.tokenizer.decode
-        """
         return self.batched_generate([prompt])[0]
 
     @overload
     def batched_generate(
         self, prompts: list[str], num_return_sequences: None = None, temperature: float = 0
     ) -> list[str]:
-        """
-        Batched version of `generate` method.
-        This version returns a single generation for each prompt.
-        """
 
     @overload
     def batched_generate(
         self, prompts: list[str], num_return_sequences: int, temperature: float = 0
     ) -> list[list[str]]:
         """
-        Batched version of `generate` method.
         This version returns a list of generation for each prompt.
         """
 
@@ -113,7 +92,7 @@ class BaseLLM:
 
 
 def test_model():
-    # The following code simply tests of the BaseLLM is able to complete text.
+    # The following code simply tests whether the BaseLLM can complete text.
     testset = ["The cat went up", "The dog went down"]
     model = BaseLLM()
     for t in testset:
