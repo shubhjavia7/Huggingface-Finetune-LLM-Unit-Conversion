@@ -114,8 +114,6 @@ class BaseLLM:
 
 def test_model():
     # The following code simply tests of the BaseLLM is able to complete text.
-    # It should produce garbage answers, but it should not crash.
-    # In my case it talks about cats eating cats, and dogs being happy.
     testset = ["The cat went up", "The dog went down"]
     model = BaseLLM()
     for t in testset:
