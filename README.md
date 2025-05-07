@@ -1,7 +1,7 @@
 # Huggingface-Finetune-LLM-Unit-Conversion
 In this repo, we will fine-tune a LLM from Hugging Face to learn how to do accurate unit conversions. 
 
-# Base Model
+# Model
 This file contains the foundational implementation of the BaseLLM class, which serves as the base for interacting with the SmolLM2 language model. It includes methods for:
 Formatting prompts for the model (format_prompt).
 Parsing answers from the model's output (parse_answer).
@@ -10,14 +10,14 @@ Answering multiple questions at once (answer).
 Testing the model's basic functionality (test_model).
 This file is the core utility for loading the model, tokenizing inputs, and generating outputs.
 
-# Chain of thought 
-This file builds on BaseLLM to implement the CoTModel class, which specializes in Chain-of-Thought (CoT) reasoning for unit conversion tasks. It includes:
+# Prompt Engineering 
+This file builds on BaseLLM to implement the CoTModel class, which specializes in Chain-of-Thought (CoT) reasoning and in-context learning for unit conversion tasks. It includes:
 A format_prompt method that creates a structured chat template to guide the model in reasoning step-by-step and producing accurate answers.
 A load function to initialize the CoTModel.
 A test_model function to benchmark the model's accuracy and answer rate on a validation dataset.
 This file focuses on improving the model's reasoning capabilities by leveraging in-context learning and structured prompts.
 
-# Supervised Fine-Tuning
+#  Fine Tuning
 This file implements Supervised Fine-Tuning (SFT) for the SmolLM2 model. It includes:
 Functions to tokenize data and format examples for training (tokenize and format_example).
 A TokenizedDataset class to prepare datasets for fine-tuning.
