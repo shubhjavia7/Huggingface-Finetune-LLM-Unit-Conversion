@@ -2,12 +2,9 @@
 In this repo, we will fine-tune a LLM from Hugging Face to learn how to do accurate unit conversions. 
 
 # Model
-This file contains the foundational implementation of the BaseLLM class, which serves as the base for interacting with the SmolLM2 language model. It includes methods for:
+This file contains the foundational implementation of the LLM class, which serves as the base for interacting with the SmolLM2 language model. It includes methods for:
 Formatting prompts for the model (format_prompt).
 Parsing answers from the model's output (parse_answer).
-Generating responses for single or batched prompts (generate and batched_generate).
-Answering multiple questions at once (answer).
-Testing the model's basic functionality (test_model).
 This file is the core utility for loading the model, tokenizing inputs, and generating outputs.
 
 # Prompt Engineering 
